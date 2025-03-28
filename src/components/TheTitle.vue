@@ -1,8 +1,5 @@
-<script lang="ts" setup>
-defineProps<{ propTitle: string }>()
-</script>
 <template>
-  <h2 class="h2__big">{{ propTitle }}</h2>
+  <h2 class="h2__big"><slot /></h2>
 </template>
 <style scoped>
 .h2 {

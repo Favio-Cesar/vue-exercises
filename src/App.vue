@@ -8,7 +8,7 @@ import TheTitle from '@/components/TheTitle.vue'
   </header>
 
   <main>
-    <TheTitle propTitle="Título estático" />
+    <TheTitle>Titulo estático</TheTitle>
   </main>
 </template>
 

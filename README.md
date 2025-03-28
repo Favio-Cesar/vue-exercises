@@ -1,39 +1,169 @@
-# .
+# Ejercicio 1 Vue, Crear proyecto
 
-This template should help get you started developing with Vue 3 in Vite.
+- Crea un proyecto de Vue 3, llamado vue-exercises que tenga `Pinia, Eslint, Prettier, TypeScript, scss`
+- Borra todos los componentes y Views (menos `App.vue`)
+- Elimina de `router/index.ts` la ruta `about` y `home`
+- Elimina el archivo `stores/counter.ts`
+- Elimina los archivos `/assets/base.css` y `/assets/main.css` y crea tu propio `reset.css` añadiendo variables
+- Instala una fuente
 
-## Recommended IDE Setup
+# Ejercicio 2 Vue, Crea tu primer componente
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Crea un componente llamado `TheTitle.vue`. Este componente tendrá un `<h2>` con unos estilos de tu elección
+- El contenido del `<h2>` será `Título estático`
+- Invoca este componente en `app.vue`
 
-## Type Support for `.vue` Imports in TS
+# Ejercicio 3 Vue, props
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- Pasar como prop a `TheTitle.vue` el título, el prop se llamará `propTitle`
 
-## Customize configuration
+# Ejercicio 4, slot
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+Vamos a modificar el componente `TheTitle.vue`, quitaremos el prop, y haremos que el texto del título entre por `slot`
 
-## Project Setup
+# Ejercicio 5 Vue, contador
 
-```sh
-npm install
+Crea un componente llamado `TheCounter.vue` que tendrá:
+
+- Un título usando el componente `TheTitle.vue`
+- Dos `<button>` `Increment` y `Decrement` que incrementarán o decrementarán en 1 el contador
+- ¿Hay alguna forma de mejorar el código?
+
+# Ejercicio 6 Vue, Directivas condicionales
+
+- Cuando el valor de `counter` llegue a 0 hacemos que el botón `Decrease` desaparezca
+- Cuando el valor de `counter` sea mayor o igual a 10 hacemos que el botón `Increase` desaparezca
+
+# Ejercicio 7, List rendering
+
+- Crea un componente `ProductCard.vue` que tenga `image, title, description, price, button`. El diseño a tu elección
+- Crea un `data/mock.ts` para simular los datos, mínimo 3 productos
+- Crea una página llamada `catalogo` en la que vas a pintar de 3 cards usando el componente `ProductCard.vue`, usando los datos del `mock`
+- Crea una página `home` que tendrá todo lo que hemos hecho hasta ahora en `App.vue`
+- Añade tanto en la página `home` como en `catalogo` un botón que rediriga a la página contraria
+- Usa todo lo aprendido hasta ahora, teniendo en cuenta el `html, css, etc`
+
+# Ejercicio 8 Vue, emit
+
+Crea dos componentes `ChildComponent.vue` y `ParentComponent.vue`, y haz que el hijo emita un evento saludando al componente padre mediante un botón
+
+# Ejercicio 9 Vue, Inject + Provide
+
+Envia un mensaje del componente `ParentComponent.vue` a `ChildComponent.vue`
+
+# Ejercicio 10 Vue, Composables
+
+- Traspasa toda la lógica que tiene `counter` a un composable y utilízalo
+
+# Ejercicio 11, preguntas sorpresa
+
+1. ¿Qué es un linter?
+2. ¿Qué es Husky?
+3. ¿Qué es la reactividad?
+4. ¿Desde dónde hay que crear todas las ramas para los desarrollos?
+5. ¿Cuándo se puede utilizar la rama main?
+6. ¿Qué son las custom properties?
+7. Diferencias entre v-if y v-show
+8. ¿Cuáles son los valores de falsy?
+9. ¿Qué es Nullish Coalescing Operator?
+10. ¿Para que se utiliza TypeScript?
+
+# Ejercicio 12 Vue, Estilos dinámicos
+
+- Haz que cuando el contador de `TheCounter.vue` llegue a `10` su color cambie a verde
+
+# Ejercicio 13 Vue, computed
+
+- En `TheCounter.vue` implementa otro título que tenga un contador que multiplique `*2` el valor de `counter`
+
+# Ejercicio 14 Vue, Watchers
+
+En `TheCounter.vue` añade en el título un texto, su contenido cambiará dependiendo del resultado:
+
+- Si el valor es `0` - `Estás en el valor mínimo`
+- Si el valor es `10` - `Estás en el valor máximo`
+- Si el valor está entre 1 y 9 - `Estás en los parámetros adecuados`
+
+# Ejercicio 15 Vue, Soluciona los errores
+
+En estos fragmentos de código puede que encuentres algún error, solucionalos y justifica el cambio.
+
+1.
+
+```ts
+// composables/useCounter.ts
+import { ref } from 'vue'
+
+export function useCounter() {
+  const count = ref(0)
+
+  function increment() {
+    count.value++
+  }
+}
 ```
 
-### Compile and Hot-Reload for Development
+2.
 
-```sh
-npm run dev
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const items = ref(['Apple', 'Banana', 'Cherry'])
+</script>
+<template>
+  <ul>
+    <li v-for="(item, index) in items" :key="index">
+      {{ item }}
+    </li>
+  </ul>
+</template>
 ```
 
-### Type-Check, Compile and Minify for Production
+3.
 
-```sh
-npm run build
+```vue
+<template>
+  <ul>
+    <TheComponent v-for="item in items" :key="item.id" :dataUser="item" />
+  </ul>
+</template>
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+4.
 
-```sh
-npm run lint
+```vue
+<script setup lang="ts">
+import TheTitle from '@/components/TheTitle.vue'
+import TheButton from '@/components/TheButton.vue'
+import { useCounterStore } from '@/stores/counter'
+
+const { count, message, incrementCounter, decrementCounter, doubleCounter } = useCounterStore()
+</script>
+<template>
+  <TheTitle :class="count === 10 ? 'active' : 'inactive'"
+    >Contador: {{ count }} - {{ message }}</TheTitle
+  >
+  <TheTitle>Contador doble: {{ doubleCounter }}</TheTitle>
+
+  <TheButton v-if="count < 10" aria-label="Incrementar contador" @click="incrementCounter"
+    >Increase</TheButton
+  >
+  <TheButton v-if="count > 0" aria-label="Decrementar contador" @click="decrementCounter"
+    >Decrease</TheButton
+  >
+</template>
 ```
+
+# Ejercicio 16 Vue, Pinia
+
+- Traslada toda la funcionalidad del contador a una Store de Pinia
+- Pinta también el contador en la página `catálogo` para ver que el estado de count es global
+
+# Ejercicio 11 Vue, Refactor a TS
+
+Refactoriza `ProductCard.vue` para tipar sus datos, modifica todos los archivos necesarios
+
+# Ejercicio 18 Vue, Componentes dinámicos
+
+Muestra mediante un bucle `v-for` 2 iconos, imagina que estás haciendo el menú y quieres mostrar los iconos de `RRSS`

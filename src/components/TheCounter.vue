@@ -1,6 +1,5 @@
 <script lang="ts">
 import { ref, watchEffect } from 'vue'
-import { ref, watchEffect } from 'vue'
 
 export default {
   setup() {
@@ -10,10 +9,10 @@ export default {
     const count = ref(0)
     const canAdd = ref(true)
     const canSubtract = ref(true)
-
-    const addRule = count.value < maxCount
-    const subtractRule = count.value > minCount
+    let addRule, subtractRule
     watchEffect(() => {
+      addRule = count.value < maxCount
+      subtractRule = count.value > minCount
       canAdd.value = addRule
       canSubtract.value = subtractRule
     })
@@ -29,8 +28,6 @@ export default {
       subtractValue,
       canAdd,
       canSubtract,
-      canAdd,
-      canSubtract,
     }
   },
 }
@@ -38,8 +35,7 @@ export default {
 <template>
   <button v-if="canAdd" class="button__increase" @click="addValue">Increment</button>
   <button v-if="canSubtract" class="button__decrease" @click="subtractValue">Decrement</button>
-  <button v-if="canAdd" class="button__increase" @click="addValue">Increment</button>
-  <button v-if="canSubtract" class="button__decrease" @click="subtractValue">Decrement</button>
+
   <p class="p__medium">{{ count }}</p>
 </template>
 

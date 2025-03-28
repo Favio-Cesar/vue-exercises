@@ -1,10 +1,15 @@
 <script lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 export default {
   setup() {
     const count = ref(0)
-
+    const canAdd = ref(true)
+    const canSubtract = ref(true)
+    watchEffect(() => {
+      canAdd.value = count.value < 10
+      canSubtract.value = count.value > 0
+    })
     const addValue = () => {
       count.value += 1
     }
@@ -15,13 +20,15 @@ export default {
       count,
       addValue,
       subtractValue,
+      canAdd,
+      canSubtract,
     }
   },
 }
 </script>
 <template>
-  <button class="button__increase" @click="addValue">Increment</button>
-  <button class="button__decrease" @click="subtractValue">Decrement</button>
+  <button v-if="canAdd" class="button__increase" @click="addValue">Increment</button>
+  <button v-if="canSubtract" class="button__decrease" @click="subtractValue">Decrement</button>
   <p class="p__medium">{{ count }}</p>
 </template>
 

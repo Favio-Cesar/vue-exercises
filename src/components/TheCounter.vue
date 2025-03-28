@@ -1,5 +1,6 @@
 <script lang="ts">
 import { ref, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 export default {
   setup() {
@@ -28,11 +29,15 @@ export default {
       subtractValue,
       canAdd,
       canSubtract,
+      canAdd,
+      canSubtract,
     }
   },
 }
 </script>
 <template>
+  <button v-if="canAdd" class="button__increase" @click="addValue">Increment</button>
+  <button v-if="canSubtract" class="button__decrease" @click="subtractValue">Decrement</button>
   <button v-if="canAdd" class="button__increase" @click="addValue">Increment</button>
   <button v-if="canSubtract" class="button__decrease" @click="subtractValue">Decrement</button>
   <p class="p__medium">{{ count }}</p>

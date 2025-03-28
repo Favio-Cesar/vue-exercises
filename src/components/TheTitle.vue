@@ -1,5 +1,8 @@
+<script lang="ts" setup>
+defineProps<{ propTitle: string }>()
+</script>
 <template>
-  <h2 class="h2__big">Titulo estático</h2>
+  <h2 class="h2__big">{{ propTitle }}</h2>
 </template>
 <style scoped>
 .h2 {

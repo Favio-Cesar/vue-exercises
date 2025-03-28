@@ -1,5 +1,7 @@
 :root {
   --f-font-title: 'Pixelify Sans';
   --f-font-text: 'Bytesized';
-  --s-font-h2: 4em;
+  --s-font-big: 5em;
+  --s-font-medium: 3.5em;
+  --s-font-small: 2.5em;
 }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import TheTitle from '@/components/TheTitle.vue'
+import TheCounter from '@/components/TheCounter.vue'
 </script>
 
 <template>
@@ -9,34 +10,32 @@ import TheTitle from '@/components/TheTitle.vue'
 
   <main>
     <TheTitle>Titulo estático</TheTitle>
+    <TheCounter />
   </main>
 </template>
 
 <style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  padding-right: calc(var(--section-gap) / 2);
+}
+
 header {
-  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  padding-right: calc(var(--section-gap) / 2);
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  margin: 0 2rem 0 0;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+header .wrapper {
+  display: flex;
+  place-items: flex-start;
+  flex-wrap: wrap;
 }
 </style>

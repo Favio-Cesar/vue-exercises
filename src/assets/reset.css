@@ -1,0 +1,84 @@
+@import 'variables.css';
+@font-face {
+  font-family: 'Pixelify Sans';
+  src: url('@/assets/fonts/PixelifySans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bytesized';
+  src: url('@/assets/fonts/Bytesized-Regular.ttf') format('truetype');
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+
+  min-height: 100vh;
+}
+#app {
+  height: 100vh;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-family: var(--f-font-title);
+}
+
+p {
+  text-wrap: pretty;
+  font-family: var(--f-font-text);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}

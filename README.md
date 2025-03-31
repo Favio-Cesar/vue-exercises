@@ -110,6 +110,7 @@ export function useCounter() {
   function increment() {
     count.value++
   }
+  return { count, increment } // Añadi el return, que si es un composable si o si necesita un return.
 }
 ```
 
@@ -120,10 +121,11 @@ export function useCounter() {
 import { ref } from 'vue'
 
 const items = ref(['Apple', 'Banana', 'Cherry'])
+//item en items no deberia usar un index definido, no seria ideal por motivos de reutilizacion, si los elementos cambian, no se identificarian adecuadamente.
 </script>
 <template>
   <ul>
-    <li v-for="(item, index) in items" :key="index">
+    <li v-for="item in items" :key="item">
       {{ item }}
     </li>
   </ul>
@@ -133,6 +135,7 @@ const items = ref(['Apple', 'Banana', 'Cherry'])
 3.
 
 ```vue
+<!-- no hay ningun problema -->
 <template>
   <ul>
     <TheComponent v-for="item in items" :key="item.id" :dataUser="item" />
@@ -162,6 +165,33 @@ const { count, message, incrementCounter, decrementCounter, doubleCounter } = us
   <TheButton v-if="count > 0" aria-label="Decrementar contador" @click="decrementCounter"
     >Decrease</TheButton
   >
+</template>
+```
+
+```vue
+<!-- supuesta solucion -->
+<script setup lang="ts">
+import TheTitle from '@/components/TheTitle.vue'
+import TheButton from '@/components/TheButton.vue'
+import { useCounterStore } from '@/stores/counter'
+import { storeToRefs } from 'pinia'
+
+const store = useCounterStore()
+const { count, message, doubleCounter } = storeToRefs(store)
+const { incrementCounter, decrementCounter } = store
+</script>
+<template>
+  <TheTitle :class="count === 10 ? 'active' : 'inactive'">
+    Contador: {{ count }} - {{ message }}
+  </TheTitle>
+  <TheTitle>Contador doble: {{ doubleCounter }}</TheTitle>
+
+  <TheButton v-if="count < 10" aria-label="Incrementar contador" @click="incrementCounter">
+    Increase
+  </TheButton>
+  <TheButton v-if="count > 0" aria-label="Decrementar contador" @click="decrementCounter">
+    Decrease
+  </TheButton>
 </template>
 ```
 

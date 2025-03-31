@@ -1,8 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TheCounter from '@/components/TheCounter.vue'
+import TheTitle from '@/components/TheTitle.vue'
+</script>
 
 <template>
+  <header>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  </header>
+
   <main>
-    <router-view></router-view>
+    <TheTitle>Titulo estático</TheTitle>
+    <TheCounter />
+
+    <RouterLink to="/catalog">Ir a catalog</RouterLink>
   </main>
 </template>
 

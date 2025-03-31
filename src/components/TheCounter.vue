@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useCounter } from '@/composables/TheCounter'
-
 const { addValue, subtractValue, canAdd, canSubtract, count } = useCounter()
 </script>
 <template>
@@ -11,7 +10,6 @@ const { addValue, subtractValue, canAdd, canSubtract, count } = useCounter()
     {{ count }}
   </p>
 </template>
-
 <style scoped>
 .button__increase,
 .button__decrease {

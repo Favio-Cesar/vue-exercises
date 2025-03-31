@@ -7,7 +7,9 @@ const { addValue, subtractValue, canAdd, canSubtract, count } = useCounter()
   <button v-if="canAdd" class="button__increase" @click="addValue">Increment</button>
   <button v-if="canSubtract" class="button__decrease" @click="subtractValue">Decrement</button>
 
-  <p class="p__medium">{{ count }}</p>
+  <p :class="{ p__medium: true, 'p__counter--green': !canAdd }">
+    {{ count }}
+  </p>
 </template>
 
 <style scoped>
@@ -27,5 +29,8 @@ const { addValue, subtractValue, canAdd, canSubtract, count } = useCounter()
 }
 .p__medium {
   font-size: var(--s-font-medium);
+}
+.p__counter--green {
+  color: greenyellow;
 }
 </style>

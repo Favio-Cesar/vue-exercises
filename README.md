@@ -58,15 +58,25 @@ Envia un mensaje del componente `ParentComponent.vue` a `ChildComponent.vue`
 # Ejercicio 11, preguntas sorpresa
 
 1. ¿Qué es un linter?
+   Es una herramienta que esta a cargo de la mejora del codigo a traver de la identificacion de fallos o problemas del sistema.
 2. ¿Qué es Husky?
+   Automatizaar tareas personalizadas como pruebas automaticas o analisis estático.
 3. ¿Qué es la reactividad?
+   la parte de codigo que responde a un evento o cambio de estado en otra parte del código.
 4. ¿Desde dónde hay que crear todas las ramas para los desarrollos?
+   De la rama main
 5. ¿Cuándo se puede utilizar la rama main?
+   Nunca
 6. ¿Qué son las custom properties?
+   en css, son las variables.
 7. Diferencias entre v-if y v-show
+   v-if no renderiza el componente si no cumple la condicion y v-show simplemente añade un display none condicionalmente.
 8. ¿Cuáles son los valores de falsy?
+   null, 0, "", undefined
 9. ¿Qué es Nullish Coalescing Operator?
+   ?? : es el operador que define el valor de una variable dependiendo si da falsi la primera parte del operador.
 10. ¿Para que se utiliza TypeScript?
+    Para tipar el codigo de JavaScript, de esta manera se solucionan los problemas que podrian haber al recibir y usar datos de servicios externos.
 
 # Ejercicio 12 Vue, Estilos dinámicos
 

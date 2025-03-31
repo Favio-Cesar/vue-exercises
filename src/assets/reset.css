@@ -32,7 +32,7 @@ body {
   line-height: 1.5;
   font-size: 100%;
   -webkit-font-smoothing: antialiased;
-
+  background-color: rgb(183, 183, 183);
   min-height: 100vh;
 }
 #app {

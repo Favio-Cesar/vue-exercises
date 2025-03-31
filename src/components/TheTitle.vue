@@ -4,6 +4,6 @@
 <style scoped>
 .h1__big {
   font-size: var(--s-font-big);
-  color: rgb(123, 182, 35);
+  color: rgb(208, 248, 147);
 }
 </style>

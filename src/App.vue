@@ -1,8 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import InstagramIcon from '@/components/icons/InstagramIcon.vue'
+import YoutubeIcon from '@/components/icons/YoutubeIcon.vue'
+
+const icons = { YoutubeIcon, InstagramIcon }
+</script>
 
 <template>
   <main>
     <router-view></router-view>
+    <component v-for="(icon, index) in icons" :key="index" :is="icon"></component>
   </main>
 </template>
 

@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+import type { ProductsInterface } from '@/data/mock'
+
+defineProps<ProductsInterface>()
+</script>
 <template>
   <div class="card">
     <img :src="image" alt="Product image" />
@@ -7,7 +12,3 @@
     <button>Buy</button>
   </div>
 </template>
-
-<script lang="ts" setup>
-defineProps(['image', 'title', 'description', 'price'])
-</script>

@@ -7,7 +7,7 @@ provide('message', 'hello message from parent!')
 
 <template>
   <div>
-    <h1>Numero actual : {{ count }}</h1>
+    <h1>Actual Number : {{ count }}</h1>
     <ChildComponent @increaseNumber="(n) => (count += n)" />
   </div>
 </template>

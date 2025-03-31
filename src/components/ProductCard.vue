@@ -4,7 +4,7 @@
     <h3>{{ title }}</h3>
     <p>{{ description }}</p>
     <span>{{ price }}</span>
-    <button>Comprar</button>
+    <button>Buy</button>
   </div>
 </template>
 

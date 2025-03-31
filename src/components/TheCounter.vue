@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { useCounter } from '@/composables/TheCounter'
+import { computed, ref } from 'vue'
 const { addValue, subtractValue, canAdd, canSubtract, count } = useCounter()
+const multiplicator = ref(2)
+const multiplication = computed(() => multiplicator.value * count.value)
 </script>
+
 <template>
   <button v-if="canAdd" class="button__increase" @click="addValue">Increment</button>
   <button v-if="canSubtract" class="button__decrease" @click="subtractValue">Decrement</button>
@@ -9,7 +13,11 @@ const { addValue, subtractValue, canAdd, canSubtract, count } = useCounter()
   <p :class="{ p__medium: true, 'p__counter--green': !canAdd }">
     {{ count }}
   </p>
+
+  <h1>Multiplicated by {{ multiplicator }} :</h1>
+  <h2>{{ multiplication }}</h2>
 </template>
+
 <style scoped>
 .button__increase,
 .button__decrease {

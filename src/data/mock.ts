@@ -5,7 +5,7 @@ interface ProductsInterface {
   description: string
   price: number
 }
-/* https://picsum.photos/200 */
+
 export const products: ProductsInterface[] = [
   {
     id: 1,

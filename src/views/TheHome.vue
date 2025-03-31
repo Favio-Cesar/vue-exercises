@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ParentComponent from '@/components/ParentComponent.vue'
 import TheCounter from '@/components/TheCounter.vue'
 import TheTitle from '@/components/TheTitle.vue'
 </script>
@@ -11,7 +12,7 @@ import TheTitle from '@/components/TheTitle.vue'
   <main>
     <TheTitle>Titulo estático</TheTitle>
     <TheCounter />
-
+    <ParentComponent></ParentComponent>
     <RouterLink to="/catalog">Ir a catalog</RouterLink>
   </main>
 </template>
